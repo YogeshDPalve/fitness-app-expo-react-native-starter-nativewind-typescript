@@ -1,13 +1,39 @@
 import { Link } from "expo-router";
 import React from "react";
-import { SafeAreaView, Text, View } from "react-native";
-
+import { Text, View, Platform, StatusBar } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 export default function Page() {
   return (
-    <SafeAreaView className="flex flex-1">
+    <SafeAreaView
+      className="flex flex-1 bg-white"
+      style={{
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      }}
+    >
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <Header />
       <Content />
     </SafeAreaView>
+  );
+}
+
+function Header() {
+  return (
+    <View>
+      <View className="px-4 lg:px-6 h-7 flex items-center flex-row justify-between">
+        <Link className="font-bold flex-1 items-center justify-center" href="/">
+          PAPAFAM
+        </Link>
+        <View>
+          <Link
+            className="text-md font-medium hover:underline web:underline-offset-4"
+            href="https://www.papareact.com/course"
+          >
+            Join My Course ❤️
+          </Link>
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -28,6 +54,7 @@ function Content() {
               This template sets up Expo and Tailwind (NativeWind) allowing you
               to quickly get started with my YouTube tutorial!
             </Text>
+
             <Link href="https://www.youtube.com/@sonnysangha" target="_blank">
               <Text className="text-lg text-center text-blue-500 hover:text-blue-700 underline md:text-xl dark:text-blue-400 dark:hover:text-blue-300">
                 https://www.youtube.com/@sonnysangha
@@ -64,26 +91,6 @@ function Content() {
               </Link>
             </View>
           </View>
-        </View>
-      </View>
-    </View>
-  );
-}
-
-function Header() {
-  return (
-    <View>
-      <View className="px-4 lg:px-6 h-14 flex items-center flex-row justify-between ">
-        <Link className="font-bold flex-1 items-center justify-center" href="/">
-          PAPAFAM
-        </Link>
-        <View className="">
-          <Link
-            className="text-md font-medium hover:underline web:underline-offset-4"
-            href="https://www.papareact.com/course"
-          >
-            Join My Course ❤️
-          </Link>
         </View>
       </View>
     </View>
