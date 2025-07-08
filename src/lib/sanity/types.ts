@@ -201,3 +201,4 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 export type ExercisesQueryResult = Exercise[];
+export type ExercisesData = Exercise;
