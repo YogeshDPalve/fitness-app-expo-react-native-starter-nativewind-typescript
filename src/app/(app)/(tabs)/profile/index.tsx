@@ -27,7 +27,7 @@ export default function ProfilePage() {
       <View className="px-6 mb-8 ">
         <TouchableOpacity
           onPress={handleSignOut}
-          className="bg-red-600 rounded-2xl p-4 shadow-sm"
+          className="bg-rose-600 rounded-2xl p-4 shadow-sm"
           activeOpacity={0.8}
         >
           <View className="flex-row items-center justify-center">
