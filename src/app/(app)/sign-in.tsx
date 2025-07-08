@@ -67,8 +67,8 @@ export default function Page() {
           <View className="flex justify-between mt-10">
             {/* logo branding */}
             <View className="items-center mb-8">
-              <View className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl items-center justify-center mb-4 shadow-lg">
-                <Ionicons name="fitness" size={40} color="gray" />
+              <View className="w-20 h-18 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl items-center justify-center mb-4 shadow-2xl shadow-gray-600">
+                <Ionicons name="fitness"  size={45} color="white" />
               </View>
               <Text className="text-3xl font-extrabold text-gray-900 mb-2">
                 FitTracker
