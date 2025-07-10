@@ -130,7 +130,7 @@ export default function ExerciseDetail() {
         <TouchableOpacity
           className="w-10 h-10 bg-black/20 rounded-full items-center justify-center backdrop:blur-sm"
           onPress={() => router.back()}
-        >
+        > 
           <Ionicons name="close" size={24} color="white" />
         </TouchableOpacity>
       </View>
