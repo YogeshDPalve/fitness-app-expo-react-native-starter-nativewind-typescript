@@ -15,6 +15,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { client, urlFor } from "@/lib/sanity/client";
 import { Exercise, ExercisesData } from "@/lib/sanity/types";
 import { defineQuery } from "groq";
+import Markdown from "react-native-markdown-display";
+
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
     case "beginner":
@@ -130,7 +132,7 @@ export default function ExerciseDetail() {
         <TouchableOpacity
           className="w-10 h-10 bg-black/20 rounded-full items-center justify-center backdrop:blur-sm"
           onPress={() => router.back()}
-        > 
+        >
           <Ionicons name="close" size={24} color="white" />
         </TouchableOpacity>
       </View>
@@ -209,7 +211,50 @@ export default function ExerciseDetail() {
 
           {/* Ai guidance */}
           {/* TODO AI GUIDANCE */}
-
+          {(aiGuidance || aiLoading) && (
+            <View className="mb-6">
+              <View className="flex-row items-center mb-3">
+                <Ionicons name="fitness" size={24} color="#3B82F6" />
+                <Text className="text-xl font-semibold text-gray-800 ml-2">
+                  AI Coach Says....
+                </Text>
+              </View>
+              {aiLoading ? (
+                <View className="bg-gray-50 rounded-xl p-4 items-center">
+                  <ActivityIndicator size={"small"} color="#3B82F6" />
+                  <Text className="text-gray-600 mt-2">
+                    Getting personalized guidance...
+                  </Text>
+                </View>
+              ) : (
+                <View className="bg-blue-50 rounded-xl p-4 border-l-4 border-blue-500">
+                  <Markdown
+                    style={{
+                      body: {
+                        paddingBottom: 20,
+                      },
+                      heading2: {
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        color: "#af2937",
+                        marginTop: 12,
+                        marginBottom: 6,
+                      },
+                      heading3: {
+                        fontSize: 16,
+                        fontWeight: "600",
+                        color: "#374151",
+                        marginTop: 8,
+                        marginBottom: 4,
+                      },
+                    }}
+                  >
+                    {aiGuidance}
+                  </Markdown>
+                </View>
+              )}
+            </View>
+          )}
           {/* ----------- */}
           {/* action buttons */}
           <View className="mt-8 gap-2">
@@ -227,7 +272,9 @@ export default function ExerciseDetail() {
               {aiLoading ? (
                 <View className="flex-row items-center">
                   <ActivityIndicator size={"small"} color="white" />
-                  <Text className="text-white font-bold text-lg">Loading</Text>
+                  <Text className="text-white font-bold text-lg ml-2">
+                    Loading
+                  </Text>
                 </View>
               ) : (
                 <Text className="text-white font-bold text-lg">
